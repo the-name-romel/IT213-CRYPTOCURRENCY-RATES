@@ -46,20 +46,45 @@ class UI {
 
     // Prints the results of the valuation/rate
     displayResult(data, result, currency) {
-        
-        let HTMLTemplate = '';
 
+        // Remove the previous result
+        const prevResult = document.querySelector('#result > div');
+        if(prevResult) {
+            prevResult.remove();
+        }
+      
+        let HTMLTemplate = '';
         HTMLTemplate += `
             <div class="card cyan darken-3">
                 <div class="card-content white-text">
                     <span class="card-title">Result</span>
                     <p>The price of ${data.name} from ${currency} is ${result.price}</p>
+                    <p>Last updated: ${result.last_updated}</p>
 
                 </div>
             </div>
         `;
 
-        const divResult = document.querySelector('#result');
-        divResult.innerHTML = HTMLTemplate;
+        // Print the spinner
+        this.showSpinner();
+
+        // After 3 seconds print the result and remove the spinner
+        setTimeout(() => {
+            // Print the result
+            const divResult = document.querySelector('#result');
+            divResult.innerHTML = HTMLTemplate;
+
+            // Hide spinner
+            document.querySelector('.spinner img').remove();
+        }, 3000);
+
+        
+    }
+
+    // Prints the spinner
+    showSpinner() {
+        const spinnerGIF = document.createElement('img');
+        spinnerGIF.src = 'img/spinner.gif';
+        document.querySelector('.spinner').appendChild(spinnerGIF);
     }
 }
