@@ -43,4 +43,9 @@ class UI {
             document.querySelector('.messages div').remove();
         }, 3000)
     }
+
+    // Prints the results of the valuation/rate
+    displayResult(result) {
+        console.log(result);
+    }
 }
