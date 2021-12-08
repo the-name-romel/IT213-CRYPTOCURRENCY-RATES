@@ -28,8 +28,17 @@ form.addEventListener('submit', (e) => {
         // Query the REST API
         cryptoAPI.queryAPI(currencySelect, cryptoCurrencySelect)
             .then(data => {
-                // console.log(data.result.data.quote);
-                ui.displayResult(data.result.data.quote);
+
+                if(currencySelect === 'USD'){
+                    ui.displayResult(data.result.data, data.result.data.quote.USD,  currencySelect);
+                }else if(currencySelect === 'GBP'){
+                    ui.displayResult( data.result.data, data.result.data.quote.GBP, currencySelect);
+                }else if(currencySelect === 'EUR'){
+                    ui.displayResult( data.result.data, data.result.data.quote.EUR, currencySelect);
+                }else if(currencySelect === 'PHP'){
+                    ui.displayResult( data.result.data, data.result.data.quote.PHP, currencySelect);
+                }
+                 
             })
     }
 })
