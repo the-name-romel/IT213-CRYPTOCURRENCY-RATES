@@ -1,4 +1,4 @@
-const proxyURL = "https://cors-anywhere.herokuapp.com/";
+const proxyURL = "https://romel-acopra.herokuapp.com/";
 
 class CryptoAPI {
     // Query the rest api with a currency and a cryptocurrency
